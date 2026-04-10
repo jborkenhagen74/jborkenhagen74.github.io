@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Name] Tech & Games</title>
+    <!-- Verweis auf die lokal generierte CSS-Datei -->
+    <link href="./dist/output.css" rel="stylesheet">
+    <link href="https://cloudflare.com" rel="stylesheet">
+	
+	<script>
+	function toggleModal(modalId) {
+    const container = document.getElementById('modal-container');
+    const inners = document.querySelectorAll('.modal-inner');
+    
+    // Alle Inhalte verstecken
+    inners.forEach(inner => inner.classList.add('hidden'));
+    
+    // Gewünschten Inhalt zeigen & Container öffnen
+    document.getElementById(modalId).classList.remove('hidden');
+    container.classList.remove('hidden');
+    document.body.style.overflow = 'hidden'; // Scrollen der Hauptseite verhindern
+}
+
+function closeAllModals() {
+    document.getElementById('modal-container').classList.add('hidden');
+    document.body.style.overflow = 'auto'; // Scrollen wieder aktivieren
+}
+
+// Schließen beim Klick auf den Backdrop
+window.onclick = function(event) {
+    const container = document.getElementById('modal-container');
+    if (event.target === container.firstElementChild || event.target === container) {
+        closeAllModals();
+    }
+}
+	
+	</script>
+	
+	
+</head>
+<body class="bg-darkBg text-gray-200 font-sans selection:bg-cyber selection:text-darkBg">
+
+    <!-- Hero Section -->
+<header class="relative h-screen flex items-center justify-center overflow-hidden border-b-2 border-cyber">
+    <div class="absolute inset-0 z-0 bg-[url('../src/background.png')] bg-cover bg-center bg-no-repeat transition-opacity duration-500">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-darkBg/20 to-darkBg/80"></div>
+    </div>
+
+    <div class="relative z-10 text-center px-4 backdrop-blur-[2px] sm:backdrop-blur-0">
+        <span class="text-cyber tracking-[0.3em] uppercase text-sm font-bold mb-4 block drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
+            Proven Security. Powered by newest tech.
+        </span>
+
+		<div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-90">
+			<img src="./src/logo_trans.png" alt="" class="h-[200px] w-auto max-w-lg transform -translate-y-12">
+		</div>
+		
+		<div class="relative z-10 text-center">		
+			<h1 class="text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-white to-cyber bg-clip-text text-transparent drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]">
+				Bunker Development
+			</h1>
+			<h3 class="text-3xl md:text-4xl font-black mb-6 bg-gradient-to-r from-white to-cyber bg-clip-text text-transparent drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]">
+				Robust Individual Software
+			</h3>
+		</div>
+        <p class="max-w-2xl mx-auto text-gray-200 text-lg md:text-xl mb-8 drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
+            Wir konvergieren formale Verifikation, dezentrale Ökonomien, KI und AAA-Visualisierung zu einer unhackerbaren Echtzeit-Realität.
+        </p>
+        
+        <a href="#contact" class="bg-cyber text-darkBg px-8 py-3 rounded-md font-bold hover:bg-white transition-all transform hover:scale-105 inline-block shadow-[0_0_15px_rgba(0,229,255,0.4)]">
+            PROJEKT STARTEN
+        </a>
+    </div>
+</header>
+
+    <!-- Services Grid -->
+    <main class="container mx-auto px-6 py-24">
+        
+        <!-- seL4 Section -->
+        <section class="mb-32">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold text-cyber mb-6 flex items-center gap-3">
+                        <i class="fas fa-shield-virus"></i> seL4 Microkernel
+                    </h2>
+                    <p class="text-gray-400 leading-relaxed mb-4">
+                        Wir implementieren Lösungen auf Basis des **seL4 Microkernels**, dem weltweit einzigen Betriebssystemkern mit einem maschinell geprüften Beweis der Korrektheit und 100%igen Sicherheit. 
+                    </p>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-gold mt-1"></i> <span>**Formale Verifikation:** Mathematischer Beweis der Implementierung gegen die Spezifikation (Isabelle/HOL).</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-gold mt-1"></i> <span>**Isolation:** Starke Partitionierung kritischer Komponenten zur Prävention von Side-Channel-Attacks.</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-gold mt-1"></i> <span>**Mixed Criticality:** Sicherer Parallelbetrieb von Echtzeit-Steuerungen und allgemeinen Applikationen.</span></li>
+						<li class="flex items-start gap-2"><i class="fas fa-check text-gold mt-1"></i> <span>**State of the art:** Implementierung des MicroKit zur schnellen und sicheren Entwicklung durch Kapselung und Trennung</span></li>
+						<li class="flex items-start gap-2"><i class="fas fa-check text-gold mt-1"></i> <span>**High Performnace Realtime Applications:** Minimaler Overhead und realtime Response mit IRQ Reaction Handling und shared virtual memory</span></li>
+                    </ul>
+                </div>
+                <div class="md:w-1/2 bg-darkCard p-8 rounded-xl border border-gray-800 font-mono text-xs text-cyber/80">
+<p>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</p>
+<p>&lt;system&gt;</p>
+<p class="text-white">&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- system definition --&gt;</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;    &lt;memory_region name=&quot;rtc&quot; size=&quot;0x1000&quot; phys_addr=&quot;0x9000000&quot; /&gt;    </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;    &lt;memory_region name=&quot;shared_buffer&quot; size=&quot;0x1000&quot; /&gt;</p>
+    
+<p>&nbsp;&nbsp;&nbsp;&nbsp;    &lt;protection_domain name=&quot;serial_server&quot; priority=&quot;254&quot;&gt;</p>
+<p>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;program_image path=&quot;serial_server.elf&quot; /&gt;</p>
+
+<p>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;irq id=&quot;5&quot; irq=&quot;33&quot; /&gt;</p>
+<p>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;map mr=&quot;rtc&quot; vaddr=&quot;0x4000000&quot; perms=&quot;rw&quot; cached=&quot;false&quot; setvar_vaddr=&quot;uart_base_vaddr&quot; /&gt;</p>
+<p>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;map mr=&quot;shared_buffer&quot; vaddr=&quot;0x5000000&quot; perms=&quot;rw&quot; setvar_vaddr=&quot;shared_vaddr&quot; /&gt;</p>
+<p>    &nbsp;&nbsp;&nbsp;&nbsp;&lt;/protection_domain&gt;</p>
+
+<p>    &nbsp;&nbsp;&nbsp;&nbsp;&lt;protection_domain name=&quot;client&quot; priority=&quot;253&quot;&gt;</p>
+<p>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;program_image path=&quot;client.elf&quot; /&gt;</p>
+<p>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;map mr=&quot;shared_buffer&quot; vaddr=&quot;0x5000000&quot; perms=&quot;rw&quot; setvar_vaddr=&quot;shared_vaddr&quot; /&gt;</p>
+<p>    &nbsp;&nbsp;&nbsp;&nbsp;&lt;/protection_domain&gt;</p>
+
+<p>    &nbsp;&nbsp;&nbsp;&nbsp;&lt;channel&gt;</p>
+<p>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;end pd=&quot;serial_server&quot; id=&quot;1&quot; /&gt;</p>
+<p>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;end pd=&quot;client&quot; id=&quot;2&quot; /&gt;</p>
+<p>    &nbsp;&nbsp;&nbsp;&nbsp;&lt;/channel&gt;</p>
+<p>&lt;/system&gt;</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Serverless & Storage Section -->
+        <section class="mb-32 grid md:grid-cols-2 gap-12">
+            <div class="bg-darkCard p-10 rounded-2xl border border-gray-800 hover:border-cyber/50 transition-all">
+                <h3 class="text-2xl font-bold mb-4"><i class="fas fa-cloud text-cyber mr-3"></i> Serverless Applications</h3>
+                <p class="text-gray-400 text-sm mb-6">Wir skalieren Ihre Logik ohne Idle-Kosten. Unsere Architekturen nutzen Event-driven Computing (AWS Lambda/Fargate) für maximale Effizienz bei Lastspitzen. Oder wir verlagern ihre ganze Applikation in eine dApp in ein P2P-Netzwerk oder in eine Blockchain.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-darkBg px-3 py-1 rounded-full text-[10px] border border-gray-700">EVENT-DRIVEN</span>
+                    <span class="bg-darkBg px-3 py-1 rounded-full text-[10px] border border-gray-700">AUTO-SCALING</span>
+                    <span class="bg-darkBg px-3 py-1 rounded-full text-[10px] border border-gray-700">ZERO-MAINTENANCE</span>
+					<span class="bg-darkBg px-3 py-1 rounded-full text-[10px] border border-gray-700">TRANSPERENCY</span>
+					<span class="bg-darkBg px-3 py-1 rounded-full text-[10px] border border-gray-700">SECURITY</span>
+                </div>
+            </div>
+            <div class="bg-darkCard p-10 rounded-2xl border border-gray-800 hover:border-cyber/50 transition-all">
+                <h3 class="text-2xl font-bold mb-4"><i class="fas fa-database text-cyber mr-3"></i> Persistent Storage</h3>
+                <p class="text-gray-400 text-sm mb-6">Serverless bedeutet nicht zustandslos. Wir integrieren **Serverless Persistent Storage** (Aurora Serverless, DynamoDB), um persistente Datensätze mit 99,999% Verfügbarkeit zu sichern. Noch nicht genug? Auch eine unveränderliche permanente Speicherung mit zahllosen Replikationen weltweit hoch performant ist möglich (Arweave, Walrus, CESS)</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-darkBg px-3 py-1 rounded-full text-[10px] border border-gray-700">ACID COMPLIANT</span>
+                    <span class="bg-darkBg px-3 py-1 rounded-full text-[10px] border border-gray-700">GLOBAL REPLICATION</span>
+                    <span class="bg-darkBg px-3 py-1 rounded-full text-[10px] border border-gray-700">PAY-PER-REQUEST</span>
+					<span class="bg-darkBg px-3 py-1 rounded-full text-[10px] border border-gray-700">MAX PERFORMANCE</span>
+					<span class="bg-darkBg px-3 py-1 rounded-full text-[10px] border border-gray-700">NEVER BROKEN LINK</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blockchain & UE5 Section -->
+        <section class="mb-32">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1 relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-cyber to-purple-600 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                    <img src="./src/ls_begl.png" alt="Security Embeded Autonomous" class="relative rounded-lg grayscale hover:grayscale-0 transition-all duration-500">
+                </div>
+                <div class="order-1 md:order-2">
+                    <h2 class="text-3xl font-bold text-cyber mb-6">Autonome Systeme, Blockchain &amp; Simulation, Embedded Systems</h2>
+                    <p class="text-gray-400 mb-6">
+                        Die Verschmelzung von Ökonomie und Vision. Wir nutzen aktuelle Engines und Plattformen für industrielle Simulationen, medizinische Visualisierung, Applications und eCommerce. Dies sind nur ein paar Beispiele, und verknüpfen sie mit einem gekapselten und sicheren Unterbau um keine Angriffspunkte zu bieten. Sollte doch ein Teilsystem kompromitiert werden, bleiben alle anderen Teile unangetastet, sicher und voll funktionsfähig.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex gap-4">
+                            <i class="fas fa-link text-gold text-xl"></i>
+                            <div>
+                                <h4 class="font-bold">Trustless Assets</h4>
+                                <p class="text-xs text-gray-500">Eigentumsrechte an Simulationsdaten und Assets via NFTs und Smart Contracts nach MiCA-Standard.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <i class="fas fa-vr-cardboard text-gold text-xl"></i>
+                            <div>
+                                <h4 class="font-bold">Digital Twins 2.0</h4>
+                                <p class="text-xs text-gray-500">Hochperformante Zwillinge mit Echtzeit-Darstellung für latenzfreie Remote-Operations und vollautonome Systeme.</p>
+                            </div>
+                        </div>
+						<div class="flex gap-4">
+                            <i class="fas fa-vr-cardboard text-gold text-xl"></i>
+                            <div>
+                                <h4 class="font-bold">Embedded Systems</h4>
+                                <p class="text-xs text-gray-500">Maximale Sicherheit in ihren eingebetteten Systemen oder im IoT kombiniert mit höchster Performance</p>
+                            </div>
+                        </div>
+						<div class="flex gap-4">
+                            <i class="fas fa-vr-cardboard text-gold text-xl"></i>
+                            <div>
+                                <h4 class="font-bold">Webdevelopment</h4>
+                                <p class="text-xs text-gray-500">Auch ihre Webapplication ist bei uns in guten Händen, vom eCommerce bis zu individuellen Toolset.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+		<section class="mb-32">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1">
+                    <h2 class="text-3xl font-bold text-cyber mb-6">AI Enabling and Integration</h2>
+                    <p class="text-gray-400 mb-6">
+                        In den letzten Jahren hat KI einen großen Schritt nach vorne gemacht und ist mehr als nur eine Idee geworden. Autnomes fahren, Gesichtserkennung, Sprachmodelle und virtualle Helfer im Internet sind die Speerspitze einer viel größeren Entwicklung.<br>Wir befähigen sie KI in ihrem Unternehmen einzuführen und diese als wertvolles Tool einzusetzen.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex gap-4">
+                            <i class="fas fa-link text-gold text-xl"></i>
+                            <div>
+                                <h4 class="font-bold">AI Implementation</h4>
+                                <p class="text-xs text-gray-500">Einführung von KI als Tool zur Arbeitsoptimierung und Prozessunterstützung</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <i class="fas fa-vr-cardboard text-gold text-xl"></i>
+                            <div>
+                                <h4 class="font-bold">AI Agents</h4>
+                                <p class="text-xs text-gray-500">Sie suchen weitereichende Unterstützung, von der täglichen Email-Zuzsammenfassung bis hin zur Automatisierung komplexer Prozesse?<br>Wir entwickeln von einfachen bis zu aufwendigen Prozessen AI Agents individuell nach ihren Bedürfnissen, damit sie sich auf das wesentliche ihrer Arbeit konzentrieren können.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				<div class="order-1 md:order-2 relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-cyber to-purple-600 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                    <img src="./src/agent.png" alt="UE5 Scene" class="relative rounded-lg grayscale hover:grayscale-0 transition-all duration-500">
+                </div>
+            </div>
+        </section>
+		<section class="mb-32">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="order-1 md:order-2">
+                    <h2 class="text-3xl font-bold text-cyber mb-6">Full Service Development</h2>
+                    <p class="text-gray-400 mb-6">
+                        Von der ersten Bedarfsanalyse bis zum finalen Projekt, von der Infrastruktur bis zur Frontend, sei es lokal, im LAN oder im Internet. Zu jeder Zeit werden sie begleitet und betreut. Eine volle Einsicht in die Entwicklung und Stände ist eine Selbstverst&auml;ndlichkeit.<br>St&auml;ndig mit der Technik am Puls der Zeit ist nicht nur ein Schlagwort, sondern Passion.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex gap-4">
+                            <i class="fas fa-link text-gold text-xl"></i>
+                            <div>
+                                <h4 class="font-bold">Pers&ouml;nliche Betreuung</h4>
+                                <p class="text-xs text-gray-500">Nicht nur ein Kunde, auch kein Gegner, sondern Partner auf Augenh&ouml;he f&uuml;r ein gemeinsames Ziel und auch danach.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <i class="fas fa-vr-cardboard text-gold text-xl"></i>
+                            <div>
+                                <h4 class="font-bold">Challenge</h4>
+                                <p class="text-xs text-gray-500">Was zun&auml;chst als unm&ouml;glich erscheint ist nur eine Herausforderung, die es gemeinsam zu l&ouml;sen gilt.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				<div class="order-2 md:order-1 relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-cyber to-purple-600 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                    <img src="./src/handshake.png" alt="UE5 Scene" class="relative rounded-lg grayscale hover:grayscale-0 transition-all duration-500">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Contact Form -->
+    <section id="contact" class="bg-darkCard py-24 border-t border-gray-800">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4">Initialisieren Sie Ihr Projekt</h2>
+                <p class="text-gray-500">Senden Sie uns eine Nachricht bezüglich Ihrer Anforderungen oder eine Anfrage.</p>
+            </div>
+            <form action="https://formspree.io" method="POST" class="space-y-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <input type="text" name="name" placeholder="Name / Firma" required class="w-full bg-darkBg border border-gray-700 rounded-lg p-4 focus:border-cyber outline-none transition-all">
+                    <input type="email" name="email" placeholder="E-Mail" required class="w-full bg-darkBg border border-gray-700 rounded-lg p-4 focus:border-cyber outline-none transition-all">
+                </div>
+				<div class="mb-6 relative">
+					<label for="service" class="block text-cyber text-sm font-bold mb-2 ml-1 uppercase tracking-widest">
+						Wählen Sie den Themenbereich
+					</label>
+					
+					<div class="relative">
+						<select name="service" id="service" class="w-full bg-darkBg border border-gray-700 rounded-lg p-4 focus:border-cyber outline-none transition-all appearance-none text-white cursor-pointer">
+							<option value="sel4">seL4 Security / Verifikation</option>
+							<option value="serverless">Serverless Architecture & Storage</option>
+							<option value="blockchain">Blockchain Integration</option>
+							<option value="application">Application Realisation</option>
+							<option value="web-ecom">Webdevelopment &amp; Ecommerce</option>
+							<option value="visualisierung">Echtzeitvisualisierung</option>
+							<option value="allgemein">Allgemeine Anfrage</option>
+						</select>
+						
+						<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-400">
+							<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+								<path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+							</svg>
+						</div>
+					</div>
+				</div>
+                <textarea name="message" rows="5" placeholder="Technische Spezifikationen..." required class="w-full bg-darkBg border border-gray-700 rounded-lg p-4 focus:border-cyber outline-none transition-all"></textarea>
+                <button type="submit" class="w-full bg-cyber text-darkBg font-black py-4 rounded-lg hover:bg-white transition-all shadow-[0_0_20px_rgba(0,229,255,0.3)]">SEND COMMAND</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+	<footer class="bg-darkBg border-t border-gray-800 py-12">
+		<div class="max-w-7xl mx-auto px-4 text-center">
+			<div class="flex justify-center space-x-6 mb-4 text-sm text-gray-400">
+				<button onclick="toggleModal('modal-impressum')" class="hover:text-cyber transition-colors">Impressum</button>
+				<button onclick="toggleModal('modal-datenschutz')" class="hover:text-cyber transition-colors">Datenschutz</button>
+				<button onclick="toggleModal('modal-agb')" class="hover:text-cyber transition-colors">AGB</button>
+			</div>
+			<p class="text-gray-500 text-xs">&copy; 2026 Bunker Development. All rights reserved.</p>
+		</div>
+	</footer>
+
+	<div id="modal-container" class="fixed inset-0 z-[100] hidden overflow-y-auto">
+		<div class="fixed inset-0 bg-black/80 backdrop-blur-sm"></div>
+		
+		<div class="flex min-h-full items-center justify-center p-4">
+			<div class="relative w-full max-w-4xl rounded-lg bg-darkBg border border-gray-800 p-8 shadow-2xl">
+				<button onclick="closeAllModals()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">&times;</button>
+            
+				<div id="modal-impressum" class="hidden modal-inner prose prose-invert max-w-none text-gray-300">
+					<h2 class="text-cyber text-2xl font-bold mb-6">Impressum</h2>
+					
+					<div class="space-y-4">
+						<section>
+							<h3 class="text-white font-bold text-lg">Angaben gemäß § 5 TMG</h3>
+							<p>
+								Jan Borkenhagen<br>
+								Bunker Development<br>
+								Alte Salzstra&szlig;e 22<br>
+								23627 Gro&szlig; Sarau
+							</p>
+						</section>
+
+						<section>
+							<h3 class="text-white font-bold text-lg">Kontakt</h3>
+							<p>
+								Telefon: 0176 / 724 731 29<br>
+								E-Mail: info@bunker-development.dev<br>
+								Webseite: www.bunker-development.dev
+							</p>
+						</section>
+
+<!--						<section>
+							<h3 class="text-white font-bold text-lg">Umsatzsteuer-ID</h3>
+							<p>
+								Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br>
+								[Deine USt-IdNr. - falls vorhanden, sonst Zeile löschen]
+							</p>
+						</section>
+-->
+						<section>
+							<h3 class="text-white font-bold text-lg">Berufsbezeichnung und berufsrechtliche Regelungen</h3>
+							<p>
+								Berufsbezeichnung: Softwareentwickler<br>
+								Zuständige Kammer: IHK Lübeck
+							</p>
+						</section>
+
+						<section>
+							<h3 class="text-white font-bold text-lg">Redaktionell verantwortlich</h3>
+							<p>Jan Borkenhagen</p>
+						</section>
+
+						<hr class="border-gray-800 my-6">
+
+						<section class="text-sm text-gray-500">
+							<h3 class="text-white font-bold text-sm uppercase">EU-Streitschlichtung</h3>
+							<p>
+								Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: 
+								<a href="https://ec.europa.eu/consumers/odr/" target="_blank" class="text-cyber hover:underline">https://ec.europa.eu/consumers/odr/</a>.<br>
+								Unsere E-Mail-Adresse finden Sie oben im Impressum.
+							</p>
+						</section>
+
+						<section class="text-sm text-gray-500">
+							<h3 class="text-white font-bold text-sm uppercase">Verbraucherstreitbeilegung / Universalschlichtungsstelle</h3>
+							<p>
+								Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+							</p>
+						</section>
+					</div>
+				</div>
+
+				<div id="modal-datenschutz" class="hidden modal-inner prose prose-invert max-w-none text-gray-300">
+					<h2 class="text-cyber text-2xl font-bold mb-6">Datenschutzerklärung</h2>
+					
+					<div class="space-y-6 text-sm md:text-base">
+						<section>
+							<h3 class="text-white font-bold text-lg">1. Datenschutz auf einen Blick</h3>
+							<p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen.</p>
+						</section>
+
+						<section>
+							<h3 class="text-white font-bold text-lg">2. Verantwortlicher</h3>
+							<p>
+								Jan Borkenhagen<br>
+								Bunker Development<br>
+								Alte Salzstra&szlig;e 22<br>
+								23627 Gro&szlig; Sarau<br>
+								E-Mail: datenschutz@bunker-development.dev
+							</p>
+						</section>
+
+						<section>
+							<h3 class="text-white font-bold text-lg">3. Datenerfassung auf dieser Website</h3>
+							<h4 class="text-cyber font-semibold mt-4">Server-Log-Dateien</h4>
+							<p>Der Provider der Seiten erhebt und speichert automatisch Informationen in sogenannten Server-Log-Dateien, die Ihr Browser automatisch an uns übermittelt. Dies sind:</p>
+							<ul class="list-disc ml-5 space-y-1">
+								<li>Browsertyp und Browserversion</li>
+								<li>Verwendetes Betriebssystem</li>
+								<li>Referrer URL</li>
+								<li>Hostname des zugreifenden Rechners</li>
+								<li>Uhrzeit der Serveranfrage</li>
+								<li>IP-Adresse</li>
+							</ul>
+							<p class="mt-2 text-gray-400">Grundlage für die Datenverarbeitung ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der fehlerfreien Darstellung und Optimierung der Website).</p>
+
+							<h4 class="text-cyber font-semibold mt-4">Kontaktformular / E-Mail-Kontakt</h4>
+							<p>Wenn Sie uns per Kontaktformular oder E-Mail Anfragen zukommen lassen, werden Ihre Angaben inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
+						</section>
+
+						<section>
+							<h3 class="text-white font-bold text-lg">4. Ihre Rechte</h3>
+							<p>Sie haben jederzeit das Recht:</p>
+							<ul class="list-disc ml-5 space-y-1">
+								<li>Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten.</li>
+								<li>Die Berichtigung oder Löschung dieser Daten zu verlangen.</li>
+								<li>Einer Datenverarbeitung zu widersprechen.</li>
+								<li>Eine Beschwerde bei der zuständigen Aufsichtsbehörde einzureichen.</li>
+							</ul>
+						</section>
+
+						<section>
+							<h3 class="text-white font-bold text-lg">5. Analyse-Tools und Drittanbieter</h3>
+							<p>Wir verzichten auf dieser Website bewusst auf Tracking-Cookies und externe Analyse-Tools wie Google Analytics, um Ihre Privatsphäre maximal zu schützen.</p>
+							<p class="text-xs text-gray-500 italic">(Hinweis: Falls du doch Tools wie Google Fonts oder Analysen nutzt, müsste dieser Punkt angepasst werden.)</p>
+						</section>
+
+						<section class="border-t border-gray-800 pt-4">
+							<h3 class="text-white font-bold text-lg">6. SSL- bzw. TLS-Verschlüsselung</h3>
+							<p>Diese Seite nutzt aus Sicherheitsgründen eine SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „http://“ auf „https://“ wechselt.</p>
+						</section>
+					</div>
+				</div>
+
+				<div id="modal-agb" class="hidden modal-inner prose prose-invert max-w-none text-gray-300">
+					<h2 class="text-cyber text-2xl font-bold mb-6 italic tracking-tight">Allgemeine Geschäftsbedingungen</h2>
+					
+					<div class="space-y-8 text-sm md:text-base leading-relaxed">
+						<section>
+							<h3 class="text-white font-bold flex items-center">
+								<span class="text-cyber mr-2">§ 1</span> Geltungsbereich und Vertragsgegenstand
+							</h3>
+							<p>(1) Diese Allgemeinen Geschäftsbedingungen (nachfolgend „AGB“) gelten für alle Verträge über Software-Entwicklung (Visualisierung, seL4-Systeme, Webdevelopment), Blockchain-Programmierung, dApp-Development, Auditing und technisches Consulting zwischen der <strong>Bunker Development</strong> (nachfolgend „Anbieter“) und ihren Kunden (nachfolgend „Auftraggeber“).</p>
+							<p>(2) Das Angebot richtet sich ausschließlich an Unternehmer im Sinne des § 14 BGB.</p>
+							<p>(3) Abweichende Bedingungen des Auftraggebers werden nicht anerkannt.</p>
+						</section>
+
+						<section>
+							<h3 class="text-white font-bold flex items-center">
+								<span class="text-cyber mr-2">§ 2</span> Leistungsumfang und Mitwirkungspflichten
+							</h3>
+							<p>(1) Der konkrete Leistungsumfang ergibt sich aus dem jeweiligen Einzelauftrag oder Angebot.</p>
+							<p>(2) Der Anbieter schuldet die Erbringung der Dienstleistung nach dem Stand der Technik. Soweit nicht ausdrücklich schriftlich vereinbart, ist die Erzielung eines bestimmten wirtschaftlichen Erfolgs nicht geschuldet.</p>
+							<p>(3) Der Auftraggeber ist zur Mitwirkung verpflichtet, insbesondere zur Bereitstellung notwendiger Schnittstellendefinitionen, Testumgebungen und Hardwarezugänge.</p>
+						</section>
+
+						<section class="border-l-2 border-cyber pl-6 bg-white/5 py-4 rounded-r-lg">
+							<h3 class="text-white font-bold flex items-center">
+								<span class="text-cyber mr-2">§ 3</span> Blockchain-Entwicklung / MiCA-Abgrenzung
+							</h3>
+							<div class="space-y-3">
+								<p><strong>(1) Technologieanbieter-Status:</strong> Der Anbieter tritt ausschließlich als Technologieentwickler auf. Er erbringt keine genehmigungspflichtigen Finanzdienstleistungen im Sinne des KWG, WpIG oder der MiCA-Verordnung.</p>
+								<p><strong>(2) Keine Anlageberatung:</strong> Die Programmierung von Smart Contracts oder Audits stellt keine Anlageberatung oder Emissionsgeschäft dar.</p>
+								<p><strong>(3) Keine Verwahrung:</strong> Der Anbieter übernimmt zu keinem Zeitpunkt die Verfügungsgewalt über private Keys oder Krypto-Assets. Die Verantwortung liegt allein beim Auftraggeber.</p>
+								<p><strong>(4) Regulatorisches Risiko:</strong> Der Auftraggeber trägt das Risiko für die rechtliche Zulässigkeit seines Geschäftsmodells.</p>
+							</div>
+						</section>
+
+						<section>
+							<h3 class="text-white font-bold flex items-center">
+								<span class="text-cyber mr-2">§ 4</span> Nutzungsrechte (IP)
+							</h3>
+							<p>(1) Soweit nicht anders vereinbart, erhält der Auftraggeber ein einfaches, zeitlich und örtlich unbeschränktes Nutzungsrecht für den vertraglich vorgesehenen Zweck.</p>
+							<p>(2) Urheberrechte an vorbestehenden Standard-Komponenten, Bibliotheken (z.B. seL4-Kern-Module) oder vom Anbieter entwickelten Tools (Frameworks) verbleiben beim Anbieter.</p>
+						</section>
+
+						<section>
+							<h3 class="text-white font-bold flex items-center">
+								<span class="text-cyber mr-2">§ 5</span> Gewährleistung und Haftung
+							</h3>
+							<p>(1) Der Anbieter haftet für Vorsatz und grobe Fahrlässigkeit unbeschränkt. Für einfache Fahrlässigkeit nur bei Verletzung einer Kardinalpflicht.</p>
+							<p>(2) Keine Garantie für vollständige Fehlerfreiheit aufgrund der Komplexität (seL4/Smart Contracts). Keine Haftung für Manipulationen Dritter (Hackerangriffe, Exploits), die dem Stand der Technik entsprechen.</p>
+							<p>(3) Die Haftung für mittelbare Schäden oder entgangenen Gewinn (insb. Kursverluste von Krypto-Assets) ist ausgeschlossen.</p>
+						</section>
+
+						<div class="grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-gray-800 pt-8">
+							<section>
+								<h3 class="text-white font-bold mb-2 italic">§ 6 Abnahme</h3>
+								<p class="text-xs text-gray-400 leading-relaxed italic">Erfolgt nach produktiver Nutzung oder automatisch 14 Tage nach Übergabe ohne Mängelrüge.</p>
+							</section>
+							<section>
+								<h3 class="text-white font-bold mb-2 italic">§ 7 Schlussbestimmungen</h3>
+								<p class="text-xs text-gray-400 leading-relaxed italic">Recht der BRD. Erfüllungsort und Gerichtsstand ist der Sitz des Anbieters. UN-Kaufrecht ausgeschlossen.</p>
+							</section>
+						</div>
+					</div>
+				</div>				
+								
+								
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>
